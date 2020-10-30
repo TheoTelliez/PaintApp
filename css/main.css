@@ -1,0 +1,232 @@
+/* Début du CSS */
+
+body {
+    background-image: url("../img/background.jpg"); /* On défini l'arrière plan avec l'image "background.jpg" */
+    background-size: 100%; /* On défini la taille de l'arrière plan à 100% */
+    font-family: 'Indie Flower', cursive;  /* On défini la police de texte à Indie Flower car c'est une jolie police qui colle bien */
+    color: white;  /* On défini l'arrière plan en blanc si jamais l'image dépop */
+	width: 99.2%;  /* On défini la largeur à 99,2% car avec 100% ya une scollbar en bas et ca fait moche... donc <= 99.2% MAX */
+}
+
+
+section {
+	/* border-left: 1px solid #909090; */ /* A activer pour mettre les bordures si on ne veut pas d'arrondi dans le canevas */
+	float: left; /* On défini le float a left pour qu'il puisse bien se positionner */
+	/* background: #fff; */ /* A activer pour mettre les bordures si on ne veut pas d'arrondi dans le canevas */
+	box-sizing: border-box; /* On défini la façon dont la hauteur et la largeur totale de l'élément qui est calculée par rapport à son parent donc div class row */
+	border-bottom-right-radius: 5px; /* On défini les coins en radius de 5px pour l'arrondi */
+	width: 80%; /* On défini la hauteur à 80% pour pas que ca ne soit trop grand par rapport au background */
+	position: relative; /* On défini la position relative pour pas que le trait ne soit décallé dans le canevas par rapport au curseur */
+	height: 80%; /* On défini la hauteur à 80% pour pas que ca ne soit trop grand par rapport au background */
+}
+
+
+#canvas{
+	background-image: url("../img/paper.jpg"); /* On défini l'arrière plan avec l'image "paper.jpg" en gros blanc mais si je veux changer c'est ici que je peux le faire */
+    border-radius: 50px; /* On défini les coins arrondis pour la bordure de l'élément (ici le canevas) */
+	height: 800px; /* On défini la hauteur de base du canevas à 800px */
+}
+
+
+h3{
+	padding: 5px 0 5px 15px; /* On défini la propriété padding qui est une propriété raccourcie qui permet de définir les différents écarts de remplissage sur les quatre côtés d'un élément donc ici c'est top right bottom et left */
+	border-bottom: 1px solid #909090; /* On défini la bordure du bas avec une taille de 1px en solid et avec la couleur 909090 en hexa - La propriété border-bottom est une propriété raccourcie qui définit la bordure du côté bas d'un élément. */
+	margin-bottom: 2px; /* On défini la marge en bas du h3 à px */
+}
+
+
+input{
+	width: 90%; /* On défini la taille de l'input à 90% pour pouvoir afficher le out à coté (avec la taille du pinceau), sinon ca passe pas à 100% et c'est moche */
+	margin: 5px auto; /* On défini la marge à 5x en automatique pour gérer la marge en fonction de la place */
+	height: 20px; /* On défini la hauteur fixe pour ne pas que le curseur dépasse de la div */
+}
+
+
+#tmp_canvas {
+	position: absolute; /* On défini la position absolute pour pas que le trait ne soit décallé dans le canevas par rapport au curseur et à l'autre vrai canevas */
+	left: 0px; right: 0; /* On défini les marges à droite et à gauche */
+	bottom: 0; top: 0;  /* On défini les marges en haut et en bas */
+	cursor: crosshair; /* SUPER IMPORTANT On défini le curseur en tant que croix pour faire l'effet du vrai pinceau précis - il existe aussi : help / wait / not-allowed / zoom-in / grab / etc. */
+}
+
+
+#circlebtn {
+	border-radius: 50px; /* On défini les coins arrondis pour la bordure de l'élément (ici le cercle) */
+}
+
+
+#menu {
+    background-color: rgba(255, 255, 255, 0.2); /* On défini la couleur de l'arrière plan de la div la ou il y a tout les outils (le menu quoi) */
+    border-radius: 10px; /* On défini les coins arrondis pour la bordure de l'élément (ici le bouton du menu) */
+}
+
+
+#brush_size_box {
+    background-color: white; /* Pour le placeholder - qui change en fonction de la couleur du pinceau */
+    border-radius: 50%; /* On défini le border radius à 50% pour faire un rond */
+    width: 100px; /* Pour le placeholder - qui change en fonction de la taille du pinceau */
+    height: 100px; /* Pour le placeholder - qui change en fonction de la taille du pinceau */
+}
+
+
+.fa-save, .fa-trash, .fa-trash-alt, .fa-times {
+    font-size: 64px; /* On défini la taille des font awesome à 64px */
+    color: rgba(255, 255, 255, 0.9); /* On défini la couleur des font awesome à blanc */
+}
+
+@media (max-width: 500px) {
+    .c_title {
+        position: static !important; /* On défini la position du titre statique avec l'attribut important ce qui veut dire qu'on passe outre les autres déclarations en CSS */
+		/* En savoir plus sur !important / !veryimportant etc : https://christophe-f.developpez.com/traductions/css/declaration-important/ */
+    }
+}
+
+
+/* ScrollBar */
+
+::-webkit-scrollbar {
+    width: 15px; /* On défini la taille de la scrollbar à 15px de large */
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(230, 230, 230); /* On défini la couleur d'arrière plan de la scrollbar à bleu comme l'arrière plan mais avec moins de saturation */
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(225, 16%, 49%); /* On défini la couleur d'arrière plan de la scrollbar à bleu comme l'arrière plan mais avec moins de saturation quand elle est en défilement */
+    border-radius: 5px; /* On défini le border radius à 5px pour faire un arrondi propre */
+	/* Le pseudo-élément ::-webkit-scrollbar permet de modifier le style de la barre de défilement associée à un élément. Il s'agit d'un pseudo-élément propriétaire, UNIQUEMENT DISPO pour les navigateurs WebKit. */
+	/* Donc pour firefox ca ne fonctionne pas même avec le -moz */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(225, 16%, 39%); /* On défini la couleur d'arrière plan de la scrollbar à bleu comme l'arrière plan mais avec moins de saturation quand on passe le curseur dessus */
+}
+
+
+
+input[type="color"] {
+	-moz-appearance: none; /* La propriété -moz-appearance est utilisée dans Gecko (Firefox) afin d'afficher un élément en utilisant la mise en forme native du système d'exploitation. */
+	-webkit-appearance: none; /* La propriété -webkit-appearance est utilisée dans les navigateurs basés sur WebKit (c'est-à-dire Safari) et sur Blink (c'est-à-dire Chrome ou Opera) et permet d'avoir la même fonctionnalités. On notera que plusieurs navigateurs, non basés sur WebKit (Firefox et Edge par exemple), prennent en charge ce préfixe pour des raisons de compatibilité web */
+    background-color: transparent; /* Pour le placeholder */
+    border: 0px solid #01010175; /* On défini la bordure à 0px avec un attribut solid et une couleur égale à une couleur qu'on ne verra jamais */
+    border-radius: 10px; /* On défini le border radius à 10px pour faire un arrondi propre */
+	width:100px; /* Largeur du visuel de couleur (l'input color) */
+	height:100px; /* Hauteur du visuel de couleur (l'input color) */
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0; /* On défini la propriété padding qui est une propriété raccourcie qui permet de définir les différents écarts de remplissage sur les quatre côtés d'un élément donc ici c'est top right bottom et left à 0 */
+	border-radius: 10px; /* On défini le border radius à 10px pour faire un arrondi propre */
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none; /* On défini la bordure à none pour ne pas qu'elle s'affiche autour de l'input color */
+	border-radius: 10px; /* On défini le border radius à 10px pour faire un arrondi propre */
+}
+
+
+/* Pour Mozilla Firefox */
+input[type="color"]::-moz-color-swatch-wrapper {
+	padding: 0; /* On défini la propriété padding qui est une propriété raccourcie qui permet de définir les différents écarts de remplissage sur les quatre côtés d'un élément donc ici c'est top right bottom et left à 0 */
+	border-radius: 10px; /* On défini le border radius à 10px pour faire un arrondi propre */
+}
+input[type="color"]::-moz-color-swatch {
+	border: none; /* On défini la bordure à none pour ne pas qu'elle s'affiche autour de l'input color */
+	border-radius: 10px; /* On défini le border radius à 10px pour faire un arrondi propre */
+}
+
+.col-2 {
+	max-width: 100%; /* Pour pas que les deux input color 'Pinceau et remplissage' se superposent */
+}
+
+
+/* Les couleurs des boutons de la palette de couleurs prédéfinies */
+
+/* On défini toujours la couleur de l'arrière plan avec le background-color */
+/* Et on défini toujours la border en none afin qu'il n'y ai pas de bordure blanche autour des boutons */
+
+#coul1 {
+	background-color: #000000;
+	border: none;} /* Noir */
+	
+#coul2 {background-color: #FFFFFF;
+	border: none;} /* Blanc */
+	
+#coul3 {background-color: #880015;
+	border: none;} /* RougeFoncé */
+	
+#coul4 {background-color: #ED1C24;
+	border: none;} /* Rouge */
+	
+#coul5 {background-color: #FF7F27;
+	border: none;} /* Orange */
+
+#coul6 {background-color: #FFF200;
+	border: none;} /* Jaune */
+	
+#coul7 {background-color: #22B14C;
+	border: none;} /* Vert */
+	
+#coul8 {background-color: #00A2E8;
+	border: none;} /* Bleu */
+	
+#coul9 {background-color: #3F48CC;
+	border: none;} /* BleuFoncé */
+	
+#coul10 {background-color: #A349A4;
+	border: none;} /* Violet */
+
+
+/* Fin du CSS */
+
+
+
+/* Archives du CSS */
+
+/*
+
+Pour les anciens boutons donc plus besoin de ça mais je garde quand même au cas ou...
+
+.c_size_button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    height: 32px;
+    width: 32px;
+}
+
+.c_icon_button {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.c_icon_button:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+ */
+
+/*
+
+Pour l'ancien aperçu des couleurs - actuellement remplacé par les input color eux mêmes donc plus besoin de ça mais je garde quand même au cas ou...
+
+#color_box {
+    background-color: white;
+    border: 1px solid #01010175;
+    border-radius: 10px;
+	width:100px;
+	height:100px;
+}
+
+
+#color_box2 {
+    background-color: white;
+    border: 1px solid #01010175;
+    border-radius: 10px;
+	width:100px;
+	height:100px;
+}
+
+ */
+
+/* Fin des Archives du CSS */
